@@ -18,7 +18,7 @@ class PerangkatDesa extends Model
         return $this->belongsTo(PengajuanLayanan::class);
     }
 
-    public function penduduk(){
+    public function pendudukTable(){
         return $this->morphToMany(penduduk::class,'pendudukTable');
     }
 }

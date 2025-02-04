@@ -19,7 +19,11 @@ class PendudukTable extends Model
     //     return $this->belongsTo(penduduk::class);
     // }
 
-    public function pengajuanLayanan(){
+    public function pendudukTable(){
         return $this->morphTo();
+    }
+
+    public function penduduk(){
+        return $this->belongsTo(Penduduk::class);
     }
 }

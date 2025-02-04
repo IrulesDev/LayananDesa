@@ -13,15 +13,15 @@ class PengajuanLayanan extends Model
         'name'
     ];
 
-    public function alamat(){
-        return $this->morphToMany(penduduk::class,'pendudukTable');
-    }
-
+    
     public function perangkat_desa(){
         return $this->hasOne(PerangkatDesa::class);
     }
-
+    
     public function layanan_desa(){
         return $this->hasOne(LayananDesa::class);
+    }
+    public function pendudukTable(){
+        return $this->morphToMany(penduduk::class,'pendudukTable');
     }
 }
