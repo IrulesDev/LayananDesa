@@ -22,6 +22,6 @@ class PengajuanLayanan extends Model
         return $this->hasOne(LayananDesa::class);
     }
     public function pendudukTable(){
-        return $this->morphToMany(penduduk::class,'pendudukTable');
+        return $this->morphToMany(penduduk::class,'pendudukable');
     }
 }

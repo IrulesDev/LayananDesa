@@ -19,6 +19,6 @@ class LayananDesa extends Model
     }
 
     public function penduduk(){
-        return $this->morphToMany(penduduk::class,'pendudukTable');
+        return $this->morphToMany(penduduk::class,'pendudukable');
     }
 }

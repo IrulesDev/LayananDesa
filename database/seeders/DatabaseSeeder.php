@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Keluarga;
 use App\Models\LayananDesa;
 use App\Models\Penduduk;
-use App\Models\PendudukTable;
+use App\Models\Pendudukable;
 use App\Models\PengajuanLayanan;
 use App\Models\Perangkat_Desa;
 use App\Models\PerangkatDesa;
@@ -24,6 +24,6 @@ class DatabaseSeeder extends Seeder
         foreach($keluargas as $keluarga){
             Penduduk::factory(4)->create(['keluarga_id'=> $keluarga->id]);
         }
-        PendudukTable::factory(250)->create();
+        Pendudukable::factory(250)->create();
     }
 }

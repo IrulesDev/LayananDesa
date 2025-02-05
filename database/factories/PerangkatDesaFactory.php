@@ -21,7 +21,7 @@ class PerangkatDesaFactory extends Factory
         
         return [
             'pengajuan_id' =>PengajuanLayanan::all()->random()->id,
-            'perangkat_type' =>fake()->randomElement($role ),
+            'perangkat_type' =>fake()->unique()->randomElement($role ),
         ];
     }
 }

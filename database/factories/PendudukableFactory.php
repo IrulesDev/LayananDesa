@@ -9,9 +9,9 @@ use App\Models\PerangkatDesa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\pendudukTable>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\pendudukable>
  */
-class PendudukTableFactory extends Factory
+class PendudukableFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -22,7 +22,7 @@ class PendudukTableFactory extends Factory
     {
         return [
             'penduduk_id' => Penduduk::all()->random()->id,
-            'pendudukTable_id' =>fake()->randomElement([
+            'pendudukable_id' =>fake()->randomElement([
                 PengajuanLayanan::all()->random()->id,
                 PerangkatDesa::all()->random()->id,
                 LayananDesa::all()->random()->id,

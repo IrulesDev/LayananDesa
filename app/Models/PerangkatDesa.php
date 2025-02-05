@@ -15,10 +15,10 @@ class PerangkatDesa extends Model
     ];
 
     public function pengajuan(){
-        return $this->belongsTo(PengajuanLayanan::class);
+        return $this->belongsToMany(PengajuanLayanan::class);
     }
 
     public function pendudukTable(){
-        return $this->morphToMany(penduduk::class,'pendudukTable');
+        return $this->morphToMany(penduduk::class,'pendudukable');
     }
 }
