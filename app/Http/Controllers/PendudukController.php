@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Penduduk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PendudukController extends Controller
 {
@@ -21,16 +22,26 @@ class PendudukController extends Controller
      */
     public function store(Request $request)
     {
+        Log::info('Store method called');
+        Log::info($request->all());
+
         $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'keluarga_id' => 'required',
+            'nik' => 'required|unique:penduduks,nik'
         ]);
 
         $penduduk = Penduduk::create([
             'name' => $request->name,
+            'keluarga_id' => $request->keluarga_id,
+            'nik' => $request->nik,
         ]);
 
+        Log::info('Penduduk created: ' . $penduduk->id);
+
        return response()->json([
-           'message' => 'Data ' . $penduduk->name . ' Berhasil Ditambahkan',
+           'message' => 'Data ' . $penduduk->name . ' Berhasil Ditambahkan' ,
+        //    'penduduk' => $penduduk
        ]);
     }
 
@@ -56,18 +67,34 @@ class PendudukController extends Controller
     {
         $penduduk = Penduduk::find($id);
 
+        Log::info('ini yang akan di update' . $penduduk);
+
+        Log::info( $request->all() );     // ini cek data yang di update
+
         if (!$penduduk) {
-            return response()->json(['message' => 'Pondok not found'], 404);
+            return response()->json(['message' => 'Penduduk not found'], 404);
         }
 
+        Log::info('ini cek pont setelah if point' );
+        
+
         $dataPenduduk = $request->validate([
-            'name' => 'required'
+            'name' => 'required',
+            'keluarga_id' => 'nullable',
+            'nik' => 'nullable'
         ]);
+
+        Log::info('ini cek pont setelah validasi point' );    // ini cek data yang setelah di validasi 
+
 
         $penduduk->update($dataPenduduk);
 
+        Log::info('ini cek pont setelah penduduk update' );     //cek penduduk update
+
+
         return response()->json([
             'message' => 'Data ' . $penduduk->name . ' Berhasil Update',
+            'penduduk' => $penduduk
         ]);
     }
 

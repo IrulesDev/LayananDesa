@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('penduduks', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->foreignId('keluarga_id')->references('id')->on('keluargas')->onDelete('cascade');
-            $table->string('nik');
+            $table->foreignId('keluarga_id')->references('id')->on('keluargas')->onDelete('cascade')->nullable();
+            $table->string('nik')->nullable();
             $table->timestamps();
         });
     }

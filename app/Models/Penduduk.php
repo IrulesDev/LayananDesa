@@ -16,9 +16,9 @@ class Penduduk extends Model
     ];
 
     public function keluarga(){
-        return $this->belongsTo(keluarga::class);
+        return $this->belongsTo(Keluarga::class);
     }
     public function pendudukTable(){
-        return $this->hasOne(pendudukable::class);
+        return $this->hasOne(Pendudukable::class);
     }
 }
