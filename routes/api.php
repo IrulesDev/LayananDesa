@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\keluargaController;
 use App\Http\Controllers\pendudukController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -9,3 +10,4 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::resource('penduduk', PendudukController::class);
+Route::resource('keluarga', keluargaController::class);
