@@ -22,7 +22,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $validated['email'])->first();
 
-        if(!$user || !Hash::check($validated['password'],$user->password)){
+        if(!$user || !Hash::check($validated['password'], $user->password)){
             throw ValidationException::withMessages([
                 'message' => 'Email atau password salah'
             ]);
@@ -38,5 +38,11 @@ class AuthController extends Controller
 
     }
 
-    public function logout(){}
+    public function logout(Request $request){
+        $request->user()->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Berhasil logout'
+        ]);
+    }
 }

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/login', [AuthController::class, 'login']);
+Route::resource('layanan', LayananDesaController::class);
+Route::resource('pengajuan', PengajuanLayananController::class);
 
 Route::middleware('auth:sanctum')->group(function () {
 
@@ -18,8 +20,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::resource('penduduk', pendudukController::class);
     Route::resource('keluarga', keluargaController::class);
-    Route::resource('layanan', LayananDesaController::class);
-    Route::resource('pengajuan', PengajuanLayananController::class);
 
     Route::post('/logout', [AuthController::class, 'logout']);
 });

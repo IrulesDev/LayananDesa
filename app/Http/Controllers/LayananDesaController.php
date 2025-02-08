@@ -55,6 +55,9 @@ class LayananDesaController extends Controller
      */
     public function update(Request $request, string $id)
     {
+
+        Log::info('sebelum ip,plementasi');
+
         $layanan = LayananDesa::find($id);
 
         Log::info('ini yang akan di update' . $layanan);
